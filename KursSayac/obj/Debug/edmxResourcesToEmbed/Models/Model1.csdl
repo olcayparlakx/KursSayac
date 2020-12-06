@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="KursDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="KursDetail">
+    <Key>
+      <PropertyRef Name="KursDetailID" />
+    </Key>
+    <Property Name="KursDetailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="KursDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Person" Type="Int32" />
+    <Property Name="KursID" Type="Int32" />
+    <NavigationProperty Name="KursInfo" Relationship="Self.FK_KursDetail_KursInfo" FromRole="KursDetail" ToRole="KursInfo" />
+  </EntityType>
+  <EntityType Name="KursInfo">
+    <Key>
+      <PropertyRef Name="KursID" />
+    </Key>
+    <Property Name="KursID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="KursName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="KursDetail" Relationship="Self.FK_KursDetail_KursInfo" FromRole="KursInfo" ToRole="KursDetail" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_KursDetail_KursInfo">
+    <End Role="KursInfo" Type="Self.KursInfo" Multiplicity="0..1" />
+    <End Role="KursDetail" Type="Self.KursDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KursInfo">
+        <PropertyRef Name="KursID" />
+      </Principal>
+      <Dependent Role="KursDetail">
+        <PropertyRef Name="KursID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="KursDBEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="KursDetail" EntityType="Self.KursDetail" />
+    <EntitySet Name="KursInfo" EntityType="Self.KursInfo" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <AssociationSet Name="FK_KursDetail_KursInfo" Association="Self.FK_KursDetail_KursInfo">
+      <End Role="KursInfo" EntitySet="KursInfo" />
+      <End Role="KursDetail" EntitySet="KursDetail" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

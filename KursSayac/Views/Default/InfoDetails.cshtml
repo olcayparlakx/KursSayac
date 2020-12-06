@@ -1,0 +1,80 @@
+﻿@model IEnumerable<KursSayac.Models.KursDetail>
+
+@{
+    ViewBag.Title = "InfoDetails";
+    int counter = 1;
+}
+
+<h2>Kurs Detayları </h2>
+
+<p>
+    @Html.ActionLink("Yeni Ders Oluştur", "CreateDetail", new { @type = "button" }, new { @class="btn btn-success"} )
+</p>
+<table class="table  table table-striped table-bordered table-hover">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.KursDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Person)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KursInfo.KursName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.KursDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Person)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KursInfo.KursName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditDetails", new { id = item.KursDetailID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.KursDetailID })
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+
+<script type="text/javascript">
+    window.onload = function () {
+        var chart = new CanvasJS.Chart("chartContainer",
+            {
+                title: {
+                    text: "Kursa Katılım Oranları"
+                },
+                data: [
+
+                    {
+                        dataPoints: [
+                            @foreach (var item in Model)
+                            {
+                               @: { x: @counter, y: @item.Person, label: "@item.KursDate" },
+                               counter++;
+                            }
+
+
+                        ]
+                    }
+                ]
+            });
+
+        chart.render();
+    }
+</script>
+<script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script></head>
+<body>
+    <div id="chartContainer" style="height: 300px; width: 100%;">
+    </div>
+</body>

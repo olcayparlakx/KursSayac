@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1267
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KursSayac", "KursSayac\KursSayac.csproj", "{B3494FC8-42D5-47C2-881A-BD723BD6117E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "WebApi\WebApi.csproj", "{8E160FA5-BD57-4945-8887-3F02EE22D8F9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B3494FC8-42D5-47C2-881A-BD723BD6117E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3494FC8-42D5-47C2-881A-BD723BD6117E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3494FC8-42D5-47C2-881A-BD723BD6117E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3494FC8-42D5-47C2-881A-BD723BD6117E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E160FA5-BD57-4945-8887-3F02EE22D8F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E160FA5-BD57-4945-8887-3F02EE22D8F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E160FA5-BD57-4945-8887-3F02EE22D8F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E160FA5-BD57-4945-8887-3F02EE22D8F9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F6D9FB45-03D7-464B-B63D-E6A52F4D8DE2}
+	EndGlobalSection
+EndGlobal

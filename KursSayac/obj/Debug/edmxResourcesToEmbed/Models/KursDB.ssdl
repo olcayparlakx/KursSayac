@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="KursDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="KursDetail">
+    <Key>
+      <PropertyRef Name="KursDetailID" />
+    </Key>
+    <Property Name="KursDetailID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="KursDate" Type="varchar" MaxLength="50" />
+    <Property Name="Person" Type="int" />
+    <Property Name="KursID" Type="int" />
+  </EntityType>
+  <EntityType Name="KursInfo">
+    <Key>
+      <PropertyRef Name="KursID" />
+    </Key>
+    <Property Name="KursID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="KursName" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_KursDetail_KursInfo">
+    <End Role="KursInfo" Type="Self.KursInfo" Multiplicity="0..1" />
+    <End Role="KursDetail" Type="Self.KursDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KursInfo">
+        <PropertyRef Name="KursID" />
+      </Principal>
+      <Dependent Role="KursDetail">
+        <PropertyRef Name="KursID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="KursDBModelStoreContainer">
+    <EntitySet Name="KursDetail" EntityType="Self.KursDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="KursInfo" EntityType="Self.KursInfo" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_KursDetail_KursInfo" Association="Self.FK_KursDetail_KursInfo">
+      <End Role="KursInfo" EntitySet="KursInfo" />
+      <End Role="KursDetail" EntitySet="KursDetail" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
